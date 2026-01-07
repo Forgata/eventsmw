@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Production builds
+frontend/dist/
+frontend/build/
+backend/dist/
+
+# Environment Variables (Keep these secret!)
+.env
+frontend/.env
+backend/.env
+*.env.local
+
+# Debug logs
+npm-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
