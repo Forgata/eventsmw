@@ -26,7 +26,10 @@ export async function register(
 
     res.status(201).json({
       success: true,
-      data: result,
+      data: {
+        user: result.user,
+        accessToken: result.accessToken,
+      },
     });
   } catch (err) {
     next(err);
@@ -43,7 +46,10 @@ export async function login(
     res.cookie("refreshToken", result.refreshToken, refreshTokenCookieOption);
     res.status(200).json({
       success: true,
-      data: result,
+      data: {
+        user: result.user,
+        accessToken: result.accessToken,
+      },
     });
   } catch (err) {
     next(err);
@@ -60,7 +66,10 @@ export async function refresh(
     res.cookie("refreshToken", result.refreshToken, refreshTokenCookieOption);
     res.status(200).json({
       success: true,
-      data: result,
+      data: {
+        user: result.user,
+        accessToken: result.accessToken,
+      },
     });
   } catch (err) {
     next(err);
@@ -82,5 +91,3 @@ export async function logout(
     next(err);
   }
 }
-
-// todo do this below
