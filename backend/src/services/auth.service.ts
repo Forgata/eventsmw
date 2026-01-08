@@ -210,6 +210,7 @@ export async function refreshSession(
     userId,
   });
 
+  // re-use detection
   let matchedToken = null;
   for (const token of storedTokens) {
     const isMatch = await verifyArgonHash(refreshToken, token.tokenHash);
@@ -219,7 +220,10 @@ export async function refreshSession(
     }
   }
 
-  if (!matchedToken) throw new InvalidRefreshTokenError();
+  if (!matchedToken) {
+    await RefreshToken.deleteMany({ userId });
+    throw new InvalidRefreshTokenError();
+  }
 
   if (matchedToken.expiresAt < new Date()) {
     await matchedToken.deleteOne();
