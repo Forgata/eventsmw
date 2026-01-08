@@ -15,4 +15,5 @@ export const ENV = {
   PORT: process.env.PORT || "5000",
   JWT_ACCESS_SECRET: encode(process.env.JWT_SECRET!),
   JWT_REFRESH_SECRET: encode(process.env.JWT_REFRESH_SECRET!),
+  NODE_ENV: process.env.NODE_ENV,
 };

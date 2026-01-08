@@ -11,6 +11,7 @@ import type {
   RefreshTokenBody,
   RegisterBody,
 } from "../schemas/auth.schema.js";
+import { refreshTokenCookieOption } from "../utils/authCookies.js";
 
 export async function register(
   req: Request<{}, {}, RegisterBody>,
@@ -19,6 +20,9 @@ export async function register(
 ) {
   try {
     const result = await registerUser(req.body);
+
+    // issuing cookie
+    res.cookie("refreshToken", result.refreshToken, refreshTokenCookieOption);
 
     res.status(201).json({
       success: true,
@@ -36,6 +40,7 @@ export async function login(
 ) {
   try {
     const result = await loginUser(req.body);
+    res.cookie("refreshToken", result.refreshToken, refreshTokenCookieOption);
     res.status(200).json({
       success: true,
       data: result,
@@ -52,6 +57,7 @@ export async function refresh(
 ) {
   try {
     const result = await refreshSession(req.body);
+    res.cookie("refreshToken", result.refreshToken, refreshTokenCookieOption);
     res.status(200).json({
       success: true,
       data: result,
@@ -67,8 +73,9 @@ export async function logout(
   next: NextFunction
 ) {
   try {
-    const result = await logoutSession(req.body);
-    res.status(204).json({
+    await logoutSession(req.body);
+    res.clearCookie("refreshToken", { path: "/auth/refresh" });
+    res.sendStatus(204).json({
       success: true,
     });
   } catch (err) {
