@@ -2,12 +2,6 @@ import type { Request, Response, NextFunction } from "express";
 import { ZodError, type ZodType } from "zod";
 import { BadRequestError } from "../../errors/controller/errors.js";
 
-type RequestSchemaShape = {
-  body?: unknown;
-  query?: Record<string, unknown>;
-  params?: Record<string, unknown>;
-};
-
 export function validate<S extends ZodType<any, any, any>>(schema: S) {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
