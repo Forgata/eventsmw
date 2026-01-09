@@ -16,4 +16,5 @@ export const ENV = {
   JWT_ACCESS_SECRET: encode(process.env.JWT_SECRET!),
   JWT_REFRESH_SECRET: encode(process.env.JWT_REFRESH_SECRET!),
   NODE_ENV: process.env.NODE_ENV,
+  REFRESH_TTL_MS: process.env.REFRESH_TTL_MS,
 };
