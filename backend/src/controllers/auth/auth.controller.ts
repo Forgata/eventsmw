@@ -1,17 +1,15 @@
 import type { NextFunction, Request, Response } from "express";
-import {
-  loginUser,
-  logoutSession,
-  refreshSession,
-  registerUser,
-} from "../services/auth.service.js";
 import type {
   LoginBody,
   LogoutBody,
   RefreshTokenBody,
   RegisterBody,
-} from "../schemas/auth.schema.js";
-import { refreshTokenCookieOption } from "../utils/authCookies.js";
+} from "../../schemas/auth.schema.js";
+import { refreshTokenCookieOption } from "../../utils/auth/auth.js";
+import { loginUser } from "../../services/auth/login.service.js";
+import { refreshSession } from "../../services/auth/refresh.service.js";
+import { logoutSession } from "../../services/auth/logout.service.js";
+import { registerUser } from "../../services/auth/register.service.js";
 
 export async function register(
   req: Request<{}, {}, RegisterBody>,

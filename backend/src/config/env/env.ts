@@ -1,7 +1,7 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
-import { encode } from "../../utils/encoder.js";
+import { encode } from "../../utils/crypto/crypto.js";
 
 // Fix __dirname in ES Modules
 const __filename = fileURLToPath(import.meta.url);
@@ -16,5 +16,5 @@ export const ENV = {
   JWT_ACCESS_SECRET: encode(process.env.JWT_SECRET!),
   JWT_REFRESH_SECRET: encode(process.env.JWT_REFRESH_SECRET!),
   NODE_ENV: process.env.NODE_ENV,
-  REFRESH_TTL_MS: process.env.REFRESH_TTL_MS,
+  REFRESH_TTL_MS: process.env.REFRESH_TTL_MS!,
 };

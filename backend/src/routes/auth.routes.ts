@@ -4,14 +4,14 @@ import {
   login,
   logout,
   refresh,
-} from "../controllers/auth.controller.js";
+} from "../controllers/auth/auth.controller.js";
 import {
   RegisterSchema,
   RefreshTokenSchema,
   LogoutSchema,
   LoginSchema,
 } from "../schemas/auth.schema.js";
-import { validate } from "../middlewares/validate.middleware.js";
+import { validate } from "../middlewares/validation/validate.middleware.js";
 
 const router = Router();
 
