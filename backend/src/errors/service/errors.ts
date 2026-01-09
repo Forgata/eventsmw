@@ -1,6 +1,6 @@
-import { AppError } from "./AppError.js";
+// * domain errors for authentication service (safe to expose)
 
-// domain errors for authentication service (safe to expose)
+import { AppError } from "../base/AppError.js";
 
 // UserAlreadyExistsError
 export class UserAlreadyExistsError extends AppError {
