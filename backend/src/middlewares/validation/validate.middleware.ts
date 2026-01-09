@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from "express";
 import { ZodError, type ZodType } from "zod";
-import { BadRequestError } from "../errors/authController.errors.js";
+import { BadRequestError } from "../../errors/controller/errors.js";
 
 type RequestSchemaShape = {
   body?: unknown;
