@@ -19,8 +19,8 @@ export async function verifyArgonHash(
   storedHash: string
 ): Promise<boolean> {
   try {
-    const isMacth: boolean = await argon2.verify(storedHash, plainText);
-    return isMacth;
+    const isMatch: boolean = await argon2.verify(storedHash, plainText);
+    return isMatch;
   } catch (error) {
     throw new Error("Error verifying hash");
   }
