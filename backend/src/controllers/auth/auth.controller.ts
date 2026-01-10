@@ -4,7 +4,7 @@ import type {
   LogoutBody,
   RefreshTokenBody,
   RegisterBody,
-} from "../../schemas/auth.schema.js";
+} from "../../schemas/auth/auth.schema.js";
 import { refreshTokenCookieOption } from "../../utils/auth/auth.js";
 import { loginUser } from "../../services/auth/login.service.js";
 import { refreshSession } from "../../services/auth/refresh.service.js";

@@ -10,7 +10,7 @@ import {
   RefreshTokenSchema,
   LogoutSchema,
   LoginSchema,
-} from "../schemas/auth.schema.js";
+} from "../schemas/auth/auth.schema.js";
 import { validate } from "../middlewares/validation/validate.middleware.js";
 
 const router = Router();
