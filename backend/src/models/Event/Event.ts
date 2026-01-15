@@ -23,7 +23,7 @@ const EventSchema = new Schema<IEvent>(
     endAt: { type: Date },
     status: {
       type: String,
-      enum: ["draft", "published", "cancelled"],
+      enum: ["draft", "published", "cancelled", "completed"],
       default: "draft",
     },
     location: {
