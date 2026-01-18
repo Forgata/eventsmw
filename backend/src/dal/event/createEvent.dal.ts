@@ -1,11 +1,11 @@
 import Event from "../../models/Event/Event.js";
 import type { IEvent } from "../../models/Event/IEvent.js";
-import type { CreateEventInput } from "./types/index.js";
+import type { CreateEventDALInput } from "./types/index.js";
 import { DatabaseError, DuplicateKeyError } from "../../errors/dal/errors.js";
 import { MongoServerError } from "mongodb";
 
 export async function createEvent(
-  eventInput: CreateEventInput
+  eventInput: CreateEventDALInput
 ): Promise<IEvent> {
   try {
     const newEvent = await Event.create(eventInput);
